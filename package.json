@@ -1,0 +1,31 @@
+{
+  "name": "angularjs-property-search",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "webpack && node node_modules/.bin/webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-ui-router": "1.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.6.5",
+    "@types/angular-ui-router": "^1.1.36",
+    "@types/jquery": "^2.0.40",
+    "@types/node": "^7.0.5",
+    "angular-ts-decorators": "0.0.23",
+    "awesome-typescript-loader": "^3.1.2",
+    "css-loader": "^0.23.1",
+    "html-loader": "^0.4.5",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.3",
+    "ng-annotate-loader": "^0.1.1",
+    "style-loader": "^0.19.0",
+    "typescript": "^2.6.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

@@ -1,0 +1,29 @@
+<div class="search container">
+    <header>
+        <span class="header-title">Property cross</span>
+        <span class="right-align"><a href="./favorites">⭐</a></span>
+    </header>
+    <div class="search-wrapper">
+        <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!</p>
+        <input type="text" placeholder="Location" ng-model="$ctrl.searchInput">
+        <button ng-click="$ctrl.search($ctrl.searchInput)" ng-disabled="!$ctrl.searchInput">Go</button>
+        <button>My location</button>
+    </div>
+    <div class="results" ng-switch="$ctrl.searchService.searchResultsState">
+        <div ng-switch-when="recentSearches">
+            <h4>Recent searches:</h4>
+            <div>
+                <ul>
+                    <li ng-repeat="recentSearch in $ctrl.searchService.recentSearches track by $index"
+                        ng-click="$ctrl.onRecentSearchClick(recentSearch.location)">
+                        {{ recentSearch.location }} ({{ recentSearch.total_results }})
+                    </li>
+                    <p ng-if="!$ctrl.searchService.recentSearches.length">No searches yet</p>
+                </ul>
+            </div>
+        </div>
+        <div ng-switch-when="loading" class="loading">
+            <div class="spinner"></div>
+        </div>
+    </div>
+</div>

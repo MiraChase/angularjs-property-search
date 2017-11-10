@@ -1,0 +1,1 @@
+To start application run `npm install`, `npm start` and open <localhost:3000> in browser.
