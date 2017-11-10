@@ -17,7 +17,6 @@ export default class searchService {
             country: 'uk',
             place_name: location,
             num_res: this.searchConfig.searchResultsLength,
-
         }
     }
 

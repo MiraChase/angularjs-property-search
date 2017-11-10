@@ -14,8 +14,7 @@ class controller {
         private apiService,
         private searchService,
         private searchConfig
-    ) {
-    }
+    ) {}
 
     $onInit() {
         this.searchService.searchResultsState = 'recentSearches'
@@ -23,22 +22,31 @@ class controller {
         this.$window.addEventListener('keydown', this.onKeyDown.bind(this))
     }
 
+    setStateOnSuccessResponse(data) {
+        const { response: { total_results }, request: { location } } = data
+        if (total_results) {
+            this.searchService.searchResultsState = 'recentSearches'
+            this.searchService.addSearchToStorage(location, total_results)
+        } else {
+            this.searchService.searchResultsState = 'error'
+            this.errorText = this.searchConfig.noPropertiesFoundErrorText
+        }
+    }
+
+    setStateOnReject() {
+        this.searchService.searchResultsState = 'error'
+        this.errorText = this.searchConfig.networkIssuesErrorText
+    }
+
     search(location) {
         this.searchService.searchResultsState = 'loading'
         const searchParams = this.searchService.formSearchParams(location)
         this.apiService.getJSONP(searchParams)
-            .then(({ data: { response } }) => {
-                if (response.total_results) {
-                    this.searchService.searchResultsState = 'recentSearches'
-                    this.searchService.addSearchToStorage(location, response.total_results)
-                } else {
-                    this.searchService.searchResultsState = 'error'
-                    this.errorText = this.searchConfig.noPropertiesFoundErrorText
-                }
+            .then(({ data }) => {
+                this.setStateOnSuccessResponse(data)
             })
             .catch(e => {
-                this.searchService.searchResultsState = 'error'
-                this.errorText = this.searchConfig.networkIssuesErrorText
+                this.setStateOnReject()
             })
     }
 
