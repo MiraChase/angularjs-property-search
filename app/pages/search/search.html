@@ -25,5 +25,8 @@
         <div ng-switch-when="loading" class="loading">
             <div class="spinner"></div>
         </div>
+        <p ng-switch-when="error">
+            {{ $ctrl.errorText }}
+        </p>
     </div>
 </div>

@@ -6,12 +6,14 @@ const
 
 class controller {
     private searchInput: string = '';
+    private errorText: string = '';
 
-    static $inject = ['$window', 'apiService', 'searchService'];
+    static $inject = ['$window', 'apiService', 'searchService', 'searchConfig'];
     constructor (
         private $window,
         private apiService,
-        private searchService
+        private searchService,
+        private searchConfig
     ) {
     }
 
@@ -26,11 +28,17 @@ class controller {
         const searchParams = this.searchService.formSearchParams(location)
         this.apiService.getJSONP(searchParams)
             .then(({ data: { response } }) => {
-                this.searchService.searchResultsState = 'recentSearches'
-                this.searchService.addSearchToStorage(location, response.total_results)
+                if (response.total_results) {
+                    this.searchService.searchResultsState = 'recentSearches'
+                    this.searchService.addSearchToStorage(location, response.total_results)
+                } else {
+                    this.searchService.searchResultsState = 'error'
+                    this.errorText = this.searchConfig.noPropertiesFoundErrorText
+                }
             })
             .catch(e => {
-                console.warn(e)
+                this.searchService.searchResultsState = 'error'
+                this.errorText = this.searchConfig.networkIssuesErrorText
             })
     }
 
