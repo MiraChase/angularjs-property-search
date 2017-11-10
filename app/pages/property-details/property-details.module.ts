@@ -1,7 +1,7 @@
 import { module, element, bootstrap } from 'angular';
 import PropertyDetailsComponent from './property-details.component';
 
-export default module('FavoritesModule', [
+export default module('PropertyDetailsModule', [
     'ui.router'
 ])
     .config(['$stateProvider', '$urlRouterProvider',

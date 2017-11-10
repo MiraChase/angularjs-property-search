@@ -1,7 +1,7 @@
 import { module, element, bootstrap } from 'angular';
 import SearchResultsComponent from './search-results.component';
 
-export default module('FavoritesModule', [
+export default module('SearchResultsModule', [
     'ui.router'
 ])
     .config(['$stateProvider', '$urlRouterProvider',
