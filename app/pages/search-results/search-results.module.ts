@@ -1,14 +1,14 @@
-import { module, element, bootstrap } from 'angular';
+import { module } from 'angular';
 import SearchResultsComponent from './search-results.component';
 
 export default module('SearchResultsModule', [
     'ui.router'
 ])
     .config(['$stateProvider', '$urlRouterProvider',
-        ($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) => {
+        ($stateProvider: ng.ui.IStateProvider) => {
             $stateProvider.state({
                 name: 'searchResults',
-                url: '/search-results',
+                url: '/search-results?location',
                 component: 'searchResultsComponent'
             })
         }])

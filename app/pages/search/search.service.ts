@@ -9,22 +9,11 @@ export default class searchService {
         private searchConfig
     ) {}
 
-    formSearchParams(location) {
-        return {
-            callback: 'JSON_CALLBACK',
-            encoding: 'json',
-            action: 'search_listings',
-            country: 'uk',
-            place_name: location,
-            num_res: this.searchConfig.searchResultsLength,
-        }
-    }
-
     getRecentSearches() {
         this.recentSearches = JSON.parse(localStorage['recentSearches'] || '[]');
     }
 
-    addSearchToStorage(location, total_results) {
+    addSearchToLocalStorage(location: string, total_results: number) {
         this.getRecentSearches()
         if (this.recentSearches.length >= this.searchConfig.recentSearchesLength) {
             this.recentSearches.length = this.searchConfig.recentSearchesLength - 1

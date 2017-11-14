@@ -1,0 +1,39 @@
+property-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .list-item {
+        display: flex;
+        margin-bottom: 8px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    @media screen and (min-width: 50em) {
+        .list-item {
+            width: 50%;
+        }
+    }
+
+    .image-wrapper {
+        width: 60%;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .description {
+        margin-left: 10px;
+        width: calc(40% - 10px);
+
+        h4 {
+            margin-top: 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { module, element, bootstrap } from 'angular';
+import { module } from 'angular';
 import FavoritesComponent from './favorites.component';
 
 export default module('FavoritesModule', [
