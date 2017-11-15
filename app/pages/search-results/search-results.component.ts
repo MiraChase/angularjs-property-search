@@ -8,7 +8,7 @@ class controller {
     private loading: boolean = false
     private location: string = ''
 
-    static $inject = ['$stateParams', '$state', 'commonSearchService', 'apiService'];
+    static $inject = ['$stateParams', '$state', 'commonSearchService', 'apiService']
     constructor (
         private $stateParams: ng.ui.IStateParamsService,
         private $state: ng.ui.IStateService,

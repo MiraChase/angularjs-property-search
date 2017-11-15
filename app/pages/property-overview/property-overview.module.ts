@@ -1,5 +1,5 @@
-import { module } from 'angular';
-import PropertyOverviewComponent from './property-overview.component';
+import { module } from 'angular'
+import PropertyOverviewComponent from './property-overview.component'
 
 export default module('PropertyOverviewModule', [
     'ui.router'

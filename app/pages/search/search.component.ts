@@ -5,11 +5,11 @@ const
     bindings = {}
 
 class controller {
-    private searchInput: string = '';
-    private errorText: string = '';
-    private onKeyDown;
+    private searchInput: string
+    private errorText: string
+    private onKeyDown: any
 
-    static $inject = ['$window', '$state', 'apiService', 'searchService', 'searchConfig', 'commonSearchService'];
+    static $inject = ['$window', '$state', 'apiService', 'searchService', 'searchConfig', 'commonSearchService']
     constructor (
         private $window: ng.IWindowService,
         private $state: ng.ui.IStateService,

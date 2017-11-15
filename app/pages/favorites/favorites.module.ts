@@ -1,5 +1,5 @@
-import { module } from 'angular';
-import FavoritesComponent from './favorites.component';
+import { module } from 'angular'
+import FavoritesComponent from './favorites.component'
 
 export default module('FavoritesModule', [
     'ui.router'

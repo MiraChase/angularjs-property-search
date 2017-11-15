@@ -5,10 +5,10 @@ const
     bindings = {}
 
 class controller {
-    private roomsInfo: string;
-    private isPropertyInFavorites: boolean;
+    private roomsInfo: string
+    private isPropertyInFavorites: boolean
 
-    static $inject = ['$state', 'commonSearchService', 'favoritesCommonService'];
+    static $inject = ['$state', 'commonSearchService', 'favoritesCommonService']
     constructor (
         private $state,
         private commonSearchService,

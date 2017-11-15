@@ -21,7 +21,7 @@ const app = module('AppModule', [
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         ($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider, $locationProvider: ng.ILocationProvider) => {
         $locationProvider.html5Mode(true)
-        $urlRouterProvider.otherwise('/search');
+        $urlRouterProvider.otherwise('/search')
     }])
     .service('apiService', ApiService)
     .service('commonSearchService', CommonSearchService)
@@ -31,5 +31,5 @@ const app = module('AppModule', [
     .constant('searchConfig', SearchConfig)
 
 element(document).ready( () => {
-    bootstrap(document, [app.name]);
-});
+    bootstrap(document, [app.name])
+})

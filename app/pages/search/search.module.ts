@@ -1,5 +1,5 @@
-import { module } from 'angular';
-import SearchComponent from './search.component';
+import { module } from 'angular'
+import SearchComponent from './search.component'
 import SearchService from './search.service'
 
 export default module('SearchModule', [

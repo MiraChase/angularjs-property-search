@@ -1,5 +1,5 @@
-import { module } from 'angular';
-import SearchResultsComponent from './search-results.component';
+import { module } from 'angular'
+import SearchResultsComponent from './search-results.component'
 
 export default module('SearchResultsModule', [
     'ui.router'

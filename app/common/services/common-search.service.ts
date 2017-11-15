@@ -3,7 +3,7 @@ export default class commonSearchService {
     public searchResults: any[] = []
     public currentProperty: object
 
-    static $inject = ['searchConfig'];
+    static $inject = ['searchConfig']
     constructor (
         private searchConfig
     ) {}

@@ -1,16 +1,16 @@
 export type SearchResultStates = 'recentSearches' | 'loading' | 'locations' | 'error'
 
 export default class searchService {
-    private searchResultsState: SearchResultStates = 'recentSearches';
-    private recentSearches: any[];
+    private searchResultsState: SearchResultStates = 'recentSearches'
+    private recentSearches: any[]
 
-    static $inject = ['searchConfig'];
+    static $inject = ['searchConfig']
     constructor (
         private searchConfig
     ) {}
 
     getRecentSearches() {
-        this.recentSearches = JSON.parse(localStorage['recentSearches'] || '[]');
+        this.recentSearches = JSON.parse(localStorage['recentSearches'] || '[]')
     }
 
     addSearchToLocalStorage(location: string, total_results: number) {

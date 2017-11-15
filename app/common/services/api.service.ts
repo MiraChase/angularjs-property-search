@@ -1,5 +1,5 @@
 export default class apiService {
-    static $inject = ['$http', '$q', 'apiConfig', 'searchConfig'];
+    static $inject = ['$http', '$q', 'apiConfig', 'searchConfig']
     constructor (
         private $http: ng.IHttpService,
         private $q: ng.IQService,

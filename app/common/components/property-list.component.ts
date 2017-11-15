@@ -7,7 +7,7 @@ const
     }
 
 class controller {
-    static $inject = ['$state', 'commonSearchService'];
+    static $inject = ['$state', 'commonSearchService']
     constructor (
         private $state: ng.ui.IStateService,
         private commonSearchService
