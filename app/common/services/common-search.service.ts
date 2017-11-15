@@ -20,8 +20,16 @@ export default class commonSearchService {
         this.searchResults = this.searchResults.concat(searchResults)
     }
 
-    storeCurrentProperty(property: object) {
-        this.currentProperty = property
+    storeCurrentProperty({ img_url, lister_url, price_formatted, title, summary, bathroom_number, bedroom_number }) {
+        this.currentProperty = {
+            img_url,
+            lister_url,
+            price_formatted,
+            title,
+            summary,
+            bathroom_number,
+            bedroom_number
+        }
     }
 
     getNumResultsPerPage() {

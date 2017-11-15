@@ -4,8 +4,14 @@ const
     bindings = {}
 
 class controller {
-    static $inject = [];
-    constructor () {}
+    static $inject = ['favoritesCommonService']
+    constructor (
+        private favoritesCommonService
+    ) {}
+
+    $onInit() {
+        this.favoritesCommonService.getFavorites()
+    }
 }
 
 export default { template, controller, bindings }

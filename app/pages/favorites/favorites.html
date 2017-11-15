@@ -1,1 +1,9 @@
-favorites
+<div class="container">
+    <header>
+        <span>Favorites</span>
+    </header>
+    <div class="list-container">
+        <property-list property-list="$ctrl.favoritesCommonService.favorites"></property-list>
+        <p ng-if="!$ctrl.favoritesCommonService.favorites.length">You have not added any properties to your favourites.</p>
+    </div>
+</div>

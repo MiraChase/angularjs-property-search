@@ -6,11 +6,13 @@ const
 
 class controller {
     private roomsInfo: string;
+    private isPropertyInFavorites: boolean;
 
-    static $inject = ['$state', 'commonSearchService'];
+    static $inject = ['$state', 'commonSearchService', 'favoritesCommonService'];
     constructor (
         private $state,
-        private commonSearchService
+        private commonSearchService,
+        private favoritesCommonService
     ) {
         Object.assign(this, this.commonSearchService.currentProperty)
     }
@@ -20,7 +22,19 @@ class controller {
             this.$state.go('search')
         } else {
             this.roomsInfo = this.formRoomsInfo(this.commonSearchService.currentProperty)
+            const property = this.commonSearchService.currentProperty
+            this.isPropertyInFavorites = this.favoritesCommonService.checkPropertyInFavorites(property)
         }
+    }
+
+    togglePropertyFavoriteState() {
+        const property = this.commonSearchService.currentProperty
+        if (this.isPropertyInFavorites) {
+            this.favoritesCommonService.removePropertyFromFavorites(property)
+        } else {
+            this.favoritesCommonService.addPropertyToFavorites(property)
+        }
+        this.isPropertyInFavorites = !this.isPropertyInFavorites
     }
 
     formRoomsInfo({ bedroom_number, bathroom_number }) {

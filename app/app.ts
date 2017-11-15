@@ -5,6 +5,7 @@ import FavoritesModule from './pages/favorites/favorites.module'
 import PropertyOverviewModule from './pages/property-overview/property-overview.module'
 import ApiService from './common/services/api.service'
 import CommonSearchService from './common/services/common-search.service'
+import FavoritesCommonService from './common/services/favorites-common.service'
 import PropertyListComponent from './common/components/property-list.component'
 import ApiConfig from './common/configs/api.config'
 import SearchConfig from './common/configs/search.config'
@@ -24,6 +25,7 @@ const app = module('AppModule', [
     }])
     .service('apiService', ApiService)
     .service('commonSearchService', CommonSearchService)
+    .service('favoritesCommonService', FavoritesCommonService)
     .component('propertyList', PropertyListComponent)
     .constant('apiConfig', ApiConfig)
     .constant('searchConfig', SearchConfig)
