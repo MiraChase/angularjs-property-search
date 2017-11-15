@@ -20,11 +20,11 @@ export default class apiService {
         }
     }
 
-    getJSONP(searchParams: object): Promise<any> {
+    getJSONP(searchParams: object): ng.IPromise<any> {
         return this.$http.jsonp(this.apiConfig.apiUrl, {
             params: searchParams
         })
-            .then((results) => {
+            .then((results: ng.IHttpResponse<any>) => {
                 return results
             }, errors => {
                 return this.$q.reject(errors)

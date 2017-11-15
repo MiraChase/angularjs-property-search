@@ -6,14 +6,20 @@ property-list {
 
     .list-item {
         display: flex;
-        margin-bottom: 8px;
+        margin-top: 10px;
         width: 100%;
         cursor: pointer;
     }
 
-    @media screen and (min-width: 50em) {
+    @media screen and (min-width: 768px) {
         .list-item {
             width: 50%;
+        }
+    }
+
+    @media screen and (min-width: 1224px) {
+        .list-item {
+            width: 25%;
         }
     }
 

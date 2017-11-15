@@ -1,10 +1,10 @@
 <div class="list-item" ng-repeat="property in $ctrl.propertyList track by $index"
-     ng-click="$ctrl.redirectToPropertyOverview(property.thumb_url)">
+     ng-click="$ctrl.redirectToPropertyOverview(property)">
     <div class="image-wrapper">
-        <img ng-src="{{::property.img_url}}" alt="property.title">
+        <img ng-src="{{ ::property.img_url }}" alt="property.title">
     </div>
     <div class="description">
-        <h4>{{::property.price_formatted}}</h4>
-        <p>{{::property.title}}</p>
+        <h4>{{ ::property.price_formatted }}</h4>
+        <p>{{ ::property.title }}</p>
     </div>
 </div>

@@ -7,13 +7,15 @@ const
     }
 
 class controller {
-    static $inject = ['$state'];
+    static $inject = ['$state', 'commonSearchService'];
     constructor (
-        private $state: ng.ui.IStateService
+        private $state: ng.ui.IStateService,
+        private commonSearchService
     ) {}
 
-    redirectToPropertyOverview(url: string) {
-        this.$state.go('propertyDetails')
+    redirectToPropertyOverview(property: object) {
+        this.commonSearchService.storeCurrentProperty(property)
+        this.$state.go('propertyOverview')
     }
 }
 

@@ -2,7 +2,7 @@ import { module, element, bootstrap } from 'angular'
 import SearchModule from './pages/search/search.module'
 import SearchResultsModule from './pages/search-results/search-results.module'
 import FavoritesModule from './pages/favorites/favorites.module'
-import PropertyDetailsModule from './pages/property-details/property-details.module'
+import PropertyOverviewModule from './pages/property-overview/property-overview.module'
 import ApiService from './common/services/api.service'
 import CommonSearchService from './common/services/common-search.service'
 import PropertyListComponent from './common/components/property-list.component'
@@ -14,7 +14,7 @@ const app = module('AppModule', [
     'ui.router',
     SearchModule,
     SearchResultsModule,
-    PropertyDetailsModule,
+    PropertyOverviewModule,
     FavoritesModule
 ])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',

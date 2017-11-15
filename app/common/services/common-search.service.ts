@@ -1,9 +1,11 @@
 export default class commonSearchService {
     public searchParams: object = {}
     public searchResults: any[] = []
+    public currentProperty: object
 
-    static $inject = [];
+    static $inject = ['searchConfig'];
     constructor (
+        private searchConfig
     ) {}
 
     storeSearchParams(searchParams: object) {
@@ -16,5 +18,13 @@ export default class commonSearchService {
 
     appendSearchResults(searchResults: any[]) {
         this.searchResults = this.searchResults.concat(searchResults)
+    }
+
+    storeCurrentProperty(property: object) {
+        this.currentProperty = property
+    }
+
+    getNumResultsPerPage() {
+        return this.searchConfig.searchResultsLength
     }
 }

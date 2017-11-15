@@ -49,6 +49,13 @@ class controller {
         this.$state.go('search')
     }
 
+    checkLoadingButtonAvailable() {
+        const { total_results, page  } = this.commonSearchService.searchParams
+        const resultsPerPage = this.commonSearchService.getNumResultsPerPage()
+        return this.commonSearchService.searchResults.length &&
+            resultsPerPage * page < total_results
+    }
+
     loadNextPage() {
         const { page } = this.commonSearchService.searchParams
         const searchParams = this.apiService.formSearchParams(this.location, page + 1)
