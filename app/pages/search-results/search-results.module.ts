@@ -1,5 +1,6 @@
 import { module } from 'angular'
 import SearchResultsComponent from './search-results.component'
+import SearchResultsService from './search-results.service'
 
 export default module('SearchResultsModule', [
     'ui.router'
@@ -13,4 +14,5 @@ export default module('SearchResultsModule', [
             })
         }])
     .component('searchResultsComponent', SearchResultsComponent)
+    .service('searchResultsService', SearchResultsService)
     .name

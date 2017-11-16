@@ -9,8 +9,9 @@
         <property-list property-list="$ctrl.commonSearchService.searchResults"></property-list>
     </div>
     <div class="loading-button">
-        <button ng-if="$ctrl.checkLoadingButtonAvailable()"
-                ng-click="!$ctrl.loading && $ctrl.loadNextPage()">{{ $ctrl.loading ? 'Loading...' : 'Load more' }}
+        <button ng-if="$ctrl.searchResultsService.checkLoadingButtonAvailable()"
+                ng-click="!$ctrl.searchResultsService.loading && $ctrl.searchResultsService.loadNextPage()">
+            {{ $ctrl.searchResultsService.loading ? 'Loading...' : 'Load more' }}
         </button>
     </div>
 </div>

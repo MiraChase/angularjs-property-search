@@ -1,3 +1,5 @@
+import { ApiSearchParams } from '../interfaces/search-params.interface'
+
 export default class apiService {
     static $inject = ['$http', '$q', 'apiConfig', 'searchConfig']
     constructor (
@@ -7,7 +9,7 @@ export default class apiService {
         private searchConfig
     ) {}
 
-    formSearchParams(location: string, page: number = 1): object {
+    formSearchParams(location: string, page: number = 1): ApiSearchParams {
         return {
             callback: 'JSON_CALLBACK',
             encoding: 'json',
@@ -20,11 +22,11 @@ export default class apiService {
         }
     }
 
-    getJSONP(searchParams: object): ng.IPromise<any> {
+    getJSONP(searchParams: ApiSearchParams): ng.IPromise<ng.IHttpResponse<{}>> {
         return this.$http.jsonp(this.apiConfig.apiUrl, {
             params: searchParams
         })
-            .then((results: ng.IHttpResponse<any>) => {
+            .then((results: ng.IHttpResponse<{}>) => {
                 return results
             }, errors => {
                 return this.$q.reject(errors)

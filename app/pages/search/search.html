@@ -6,7 +6,7 @@
     <div class="search-wrapper">
         <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!</p>
         <input type="text" placeholder="Location" ng-model="$ctrl.searchInput">
-        <button ng-click="$ctrl.getPropertyData($ctrl.searchInput)" ng-disabled="!$ctrl.searchInput">Go</button>
+        <button ng-click="$ctrl.searchService.getPropertyData($ctrl.searchInput)" ng-disabled="!$ctrl.searchInput">Go</button>
         <button>My location</button>
     </div>
     <div class="results" ng-switch="$ctrl.searchService.searchResultsState">
@@ -26,7 +26,7 @@
             <div class="spinner"></div>
         </div>
         <p ng-switch-when="error">
-            {{ $ctrl.errorText }}
+            {{ $ctrl.searchService.currentErrorText }}
         </p>
     </div>
 </div>

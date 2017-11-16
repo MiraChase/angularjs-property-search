@@ -1,6 +1,8 @@
 import template from './property-list.html'
 import './property-list.less'
 
+import { Property } from '../models/property.model'
+
 const
     bindings = {
         propertyList: '<'
@@ -13,7 +15,7 @@ class controller {
         private commonSearchService
     ) {}
 
-    redirectToPropertyOverview(property: object) {
+    redirectToPropertyOverview(property: Property) {
         this.commonSearchService.storeCurrentProperty(property)
         this.$state.go('propertyOverview')
     }

@@ -1,5 +1,6 @@
 import { module } from 'angular'
 import PropertyOverviewComponent from './property-overview.component'
+import PropertyOverviewService from './property-overview.service'
 
 export default module('PropertyOverviewModule', [
     'ui.router'
@@ -13,4 +14,5 @@ export default module('PropertyOverviewModule', [
             })
         }])
     .component('propertyOverviewComponent', PropertyOverviewComponent)
+    .service('propertyOverviewService', PropertyOverviewService)
     .name

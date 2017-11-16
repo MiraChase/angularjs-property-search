@@ -1,15 +1,15 @@
 <div class="property-overview container">
     <header>
         <span class="header-title">Property details</span>
-        <span class="right-align clickable" ng-click="$ctrl.togglePropertyFavoriteState()">
-            {{ $ctrl.isPropertyInFavorites ? '⭐' : '&#9734' }}
+        <span class="right-align clickable" ng-click="$ctrl.propertyOverviewService.togglePropertyFavoriteState()">
+            {{ $ctrl.propertyOverviewService.isPropertyInFavorites ? '⭐' : '&#9734' }}
         </span>
     </header>
     <div>
         <h3>{{ ::$ctrl.price_formatted }}</h3>
         <h4>{{ ::$ctrl.title }}</h4>
         <img ng-src="{{::$ctrl.img_url }}" alt="{{ ::$ctrl.title }}">
-        <p>{{ ::$ctrl.roomsInfo }}</p>
+        <p>{{ ::$ctrl.propertyOverviewService.roomsInfo }}</p>
         <p>{{ ::$ctrl.summary }}</p>
     </div>
 </div>
