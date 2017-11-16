@@ -1,3 +1,3 @@
-export default {
-    apiUrl: 'https://api.nestoria.co.uk/api'
+export enum ApiConfig {
+    API_URL = 'https://api.nestoria.co.uk/api'
 }

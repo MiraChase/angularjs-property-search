@@ -1,6 +1,7 @@
 import template from './property-list.html'
 import './property-list.less'
 
+import CommonSearchService from '../services/common-search.service'
 import { Property } from '../models/property.model'
 
 const
@@ -12,10 +13,10 @@ class controller {
     static $inject = ['$state', 'commonSearchService']
     constructor (
         private $state: ng.ui.IStateService,
-        private commonSearchService
+        private commonSearchService: CommonSearchService
     ) {}
 
-    redirectToPropertyOverview(property: Property) {
+    private redirectToPropertyOverview(property: Property) {
         this.commonSearchService.storeCurrentProperty(property)
         this.$state.go('propertyOverview')
     }

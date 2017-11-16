@@ -1,33 +1,34 @@
 import { Property } from '../models/property.model'
-import { StoredSearchParams } from '../interfaces/search-params.interface'
+import { SearchResultsParams } from '../interfaces/search-params.interface'
 
 export default class commonSearchService {
-    public searchParams: StoredSearchParams | {} = {}
+    static $inject = ['searchConfig']
+
+    public searchResultsParams: SearchResultsParams = {}
     public searchResults: Property[] = []
     public currentProperty: Property
 
-    static $inject = ['searchConfig']
     constructor (
         private searchConfig
     ) {}
 
-    storeSearchParams(searchParams: StoredSearchParams) {
-        this.searchParams = searchParams
+    public storeSearchResultsParams(searchResultsParams: SearchResultsParams) {
+        this.searchResultsParams = searchResultsParams
     }
 
-    storeSearchResults(searchResults: Property[]) {
+    public storeSearchResults(searchResults: Property[]) {
         this.searchResults = searchResults
     }
 
-    appendSearchResults(searchResults: Property[]) {
+    public appendSearchResults(searchResults: Property[]) {
         this.searchResults = this.searchResults.concat(searchResults)
     }
 
-    storeCurrentProperty(property: Property) {
+    public storeCurrentProperty(property: Property) {
         this.currentProperty = Object.assign(new Property(), property)
     }
 
-    getNumResultsPerPage() {
-        return this.searchConfig.searchResultsLength
+    public getNumResultsPerPage() {
+        return this.searchConfig.SEARCH_RESULTS_LENGTH
     }
 }

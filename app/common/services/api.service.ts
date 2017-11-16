@@ -9,7 +9,7 @@ export default class apiService {
         private searchConfig
     ) {}
 
-    formSearchParams(location: string, page: number = 1): ApiSearchParams {
+    public formSearchParams(location: string, page: number = 1): ApiSearchParams {
         return {
             callback: 'JSON_CALLBACK',
             encoding: 'json',
@@ -17,13 +17,13 @@ export default class apiService {
             country: 'uk',
             listing_type: 'buy',
             place_name: location,
-            number_of_results: this.searchConfig.searchResultsLength,
+            number_of_results: this.searchConfig.SEARCH_RESULTS_LENGTH,
             page
         }
     }
 
-    getJSONP(searchParams: ApiSearchParams): ng.IPromise<ng.IHttpResponse<{}>> {
-        return this.$http.jsonp(this.apiConfig.apiUrl, {
+    public getJSONP(searchParams: ApiSearchParams): ng.IPromise<ng.IHttpResponse<{}>> {
+        return this.$http.jsonp(this.apiConfig.API_URL, {
             params: searchParams
         })
             .then((results: ng.IHttpResponse<{}>) => {

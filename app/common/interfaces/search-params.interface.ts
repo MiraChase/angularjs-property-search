@@ -9,8 +9,8 @@ export interface ApiSearchParams {
     page: number
 }
 
-export interface StoredSearchParams {
-    location: string,
-    total_results: number,
-    page: number
+export interface SearchResultsParams {
+    location?: string,
+    total_results?: number,
+    page?: number
 }

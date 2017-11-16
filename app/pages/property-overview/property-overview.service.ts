@@ -1,15 +1,19 @@
 import { Property} from '../../common/models/property.model'
 
+import CommonSearchService from '../../common/services/common-search.service'
+import FavoritesCommonService from '../../common/services/favorites-common.service'
+
 export default class propertyOverviewService {
+    static $inject = ['$state', 'searchConfig', 'commonSearchService', 'favoritesCommonService']
+
     public roomsInfo: string
     public isPropertyInFavorites: boolean
 
-    static $inject = ['$state', 'searchConfig', 'commonSearchService', 'favoritesCommonService']
     constructor (
         private $state: ng.ui.IStateService,
         private searchConfig,
-        private commonSearchService,
-        private favoritesCommonService
+        private commonSearchService: CommonSearchService,
+        private favoritesCommonService: FavoritesCommonService
     ) {}
 
     public togglePropertyFavoriteState() {

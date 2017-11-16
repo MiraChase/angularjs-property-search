@@ -1,17 +1,20 @@
 import template from './search.html'
 import './search.less'
 
+import SearchService from './search.service'
+
 const
     bindings = {}
 
 class controller {
+    static $inject = ['$window', 'searchService']
+
     private searchInput: string
     private onKeyDown: any
 
-    static $inject = ['$window', 'searchService']
     constructor (
         private $window: ng.IWindowService,
-        private searchService
+        private searchService: SearchService
     ) {
         this.onKeyDown = this.handleKeyDown.bind(this)
     }

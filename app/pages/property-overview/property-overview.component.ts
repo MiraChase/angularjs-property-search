@@ -1,6 +1,9 @@
 import template from './property-overview.html'
 import './property-overview.less'
 
+import CommonSearchService from '../../common/services/common-search.service'
+import PropertyOverviewService from './property-overview.service'
+
 const
     bindings = {}
 
@@ -8,8 +11,8 @@ class controller {
     static $inject = ['$state', 'commonSearchService', 'propertyOverviewService']
     constructor (
         private $state,
-        private commonSearchService,
-        private propertyOverviewService
+        private commonSearchService: CommonSearchService,
+        private propertyOverviewService: PropertyOverviewService
     ) {
         Object.assign(this, this.commonSearchService.currentProperty)
     }

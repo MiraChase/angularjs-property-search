@@ -7,8 +7,8 @@ import ApiService from './common/services/api.service'
 import CommonSearchService from './common/services/common-search.service'
 import FavoritesCommonService from './common/services/favorites-common.service'
 import PropertyListComponent from './common/components/property-list.component'
-import ApiConfig from './common/configs/api.config'
-import SearchConfig from './common/configs/search.config'
+import { ApiConfig } from './common/configs/api.config'
+import { SearchConfig } from './common/configs/search.config'
 import './app.less'
 
 const app = module('AppModule', [
@@ -18,11 +18,13 @@ const app = module('AppModule', [
     PropertyOverviewModule,
     FavoritesModule
 ])
-    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-        ($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider, $locationProvider: ng.ILocationProvider) => {
-        $locationProvider.html5Mode(true)
-        $urlRouterProvider.otherwise('/search')
-    }])
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', (
+        $stateProvider: ng.ui.IStateProvider,
+        $urlRouterProvider: ng.ui.IUrlRouterProvider,
+        $locationProvider: ng.ILocationProvider) => {
+            $locationProvider.html5Mode(true)
+            $urlRouterProvider.otherwise('/search')
+        }])
     .service('apiService', ApiService)
     .service('commonSearchService', CommonSearchService)
     .service('favoritesCommonService', FavoritesCommonService)

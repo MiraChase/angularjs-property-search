@@ -1,25 +1,22 @@
 import { Property } from '../models/property.model'
 
 export default class favoritesCommonService {
+    static $inject = []
+
     public favorites: Property[]
 
-    static $inject = []
     constructor () {}
 
-    getFavorites() {
+    public getFavorites() {
         this.favorites = JSON.parse(localStorage['favorites'] || '[]')
     }
 
-    addFavoritesToLocalStorage(favorites: Property[]) {
-        localStorage['favorites'] = JSON.stringify(favorites)
-    }
-
-    checkPropertyInFavorites(property: Property) {
+    public checkPropertyInFavorites(property: Property) {
         this.getFavorites()
         return !!this.findPropertyInFavorites(property)
     }
 
-    addPropertyToFavorites(property: Property) {
+    public addPropertyToFavorites(property: Property) {
         this.getFavorites()
 
         if (!this.checkPropertyInFavorites(property)) {
@@ -28,7 +25,7 @@ export default class favoritesCommonService {
         }
     }
 
-    removePropertyFromFavorites(property: Property) {
+    public removePropertyFromFavorites(property: Property) {
         this.getFavorites()
 
         const propertyInFavorites = this.findPropertyInFavorites(property)
@@ -38,7 +35,11 @@ export default class favoritesCommonService {
         }
     }
 
-    findPropertyInFavorites({ lister_url: propertyUrl }: Property) {
+    private addFavoritesToLocalStorage(favorites: Property[]) {
+        localStorage['favorites'] = JSON.stringify(favorites)
+    }
+
+    private findPropertyInFavorites({ lister_url: propertyUrl }: Property) {
         return this.favorites.find(({ lister_url: currentPropertyUrl }) => propertyUrl === currentPropertyUrl)
     }
 }
