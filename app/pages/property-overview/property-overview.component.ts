@@ -22,7 +22,8 @@ class controller {
         if (!currentProperty) {
             this.$state.go('search')
         } else {
-            this.propertyOverviewService.checkPropertyInFavorites(currentProperty)
+            const { lister_url: uniqueUrl } = currentProperty
+            this.propertyOverviewService.checkPropertyInFavorites(uniqueUrl)
             this.propertyOverviewService.formRoomsInfo(currentProperty)
         }
     }

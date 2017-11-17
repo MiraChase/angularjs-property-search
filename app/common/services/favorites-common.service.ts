@@ -11,15 +11,16 @@ export default class favoritesCommonService {
         this.favorites = JSON.parse(localStorage['favorites'] || '[]')
     }
 
-    public checkPropertyInFavorites(property: Property) {
+    public checkPropertyInFavorites(uniqueUrl: string) {
         this.getFavorites()
-        return !!this.findPropertyInFavorites(property)
+        return !!this.findPropertyInFavorites(uniqueUrl)
     }
 
     public addPropertyToFavorites(property: Property) {
         this.getFavorites()
 
-        if (!this.checkPropertyInFavorites(property)) {
+        const { lister_url: uniqueUrl } = property
+        if (!this.checkPropertyInFavorites(uniqueUrl)) {
             this.favorites.push(property)
             this.addFavoritesToLocalStorage(this.favorites)
         }
@@ -28,7 +29,8 @@ export default class favoritesCommonService {
     public removePropertyFromFavorites(property: Property) {
         this.getFavorites()
 
-        const propertyInFavorites = this.findPropertyInFavorites(property)
+        const { lister_url: uniqueUrl } = property
+        const propertyInFavorites = this.findPropertyInFavorites(uniqueUrl)
         if (propertyInFavorites) {
             this.favorites.splice(this.favorites.indexOf(propertyInFavorites), 1)
             this.addFavoritesToLocalStorage(this.favorites)
@@ -39,7 +41,7 @@ export default class favoritesCommonService {
         localStorage['favorites'] = JSON.stringify(favorites)
     }
 
-    private findPropertyInFavorites({ lister_url: propertyUrl }: Property) {
-        return this.favorites.find(({ lister_url: currentPropertyUrl }) => propertyUrl === currentPropertyUrl)
+    private findPropertyInFavorites(uniqueUrl: string) {
+        return this.favorites.find(({ lister_url: currentPropertyUrl }) => uniqueUrl === currentPropertyUrl)
     }
 }

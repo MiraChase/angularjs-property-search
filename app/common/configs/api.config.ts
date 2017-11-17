@@ -1,3 +1,5 @@
-export enum ApiConfig {
-    API_URL = 'https://api.nestoria.co.uk/api'
+export class API_CONFIG {
+    static get API_URL() {
+        return 'https://api.nestoria.co.uk/api'
+    }
 }

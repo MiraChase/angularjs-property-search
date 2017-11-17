@@ -2,11 +2,12 @@ import { ApiResponse } from '../../common/interfaces/api-response.interface'
 
 import ApiService from '../../common/services/api.service'
 import CommonSearchService from '../../common/services/common-search.service'
+import { SEARCH_CONFIG } from '../../common/configs/search.config'
 
 export type SearchResultStates = 'recentSearches' | 'loading' | 'locations' | 'error'
 
 export default class searchService {
-    static $inject = ['$state', 'searchConfig', 'apiService', 'commonSearchService']
+    static $inject = ['$state', 'apiService', 'commonSearchService']
 
     public searchResultsState: SearchResultStates = 'recentSearches'
     public currentErrorText: string
@@ -14,7 +15,6 @@ export default class searchService {
 
     constructor (
         private $state: ng.ui.IStateService,
-        private searchConfig,
         private apiService: ApiService,
         private commonSearchService: CommonSearchService
     ) {}
@@ -47,19 +47,19 @@ export default class searchService {
             this.redirectToSearchResults({ location })
         } else {
             this.searchResultsState = 'error'
-            this.currentErrorText = this.searchConfig.NO_PROPERTIES_FOUND_ERROR_TEXT
+            this.currentErrorText = SEARCH_CONFIG.NO_PROPERTIES_FOUND_ERROR_TEXT
         }
     }
 
     private setStateOnReject() {
         this.searchResultsState = 'error'
-        this.currentErrorText = this.searchConfig.NETWORK_ISSUES_ERROR_TEXT
+        this.currentErrorText = SEARCH_CONFIG.NETWORK_ISSUES_ERROR_TEXT
     }
 
     private addSearchToLocalStorage(location: string, total_results: number) {
         this.getRecentSearches()
-        if (this.recentSearches.length >= this.searchConfig.RECENT_SEARCHES_LENGTH) {
-            this.recentSearches.length = this.searchConfig.RECENT_SEARCHES_LENGTH - 1
+        if (this.recentSearches.length >= SEARCH_CONFIG.RECENT_SEARCHES_LENGTH) {
+            this.recentSearches.length = SEARCH_CONFIG.RECENT_SEARCHES_LENGTH - 1
         }
         this.recentSearches.unshift({
             location,

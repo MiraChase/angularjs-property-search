@@ -1,16 +1,15 @@
 import { Property } from '../models/property.model'
 import { SearchResultsParams } from '../interfaces/search-params.interface'
+import { SEARCH_CONFIG } from '../configs/search.config'
 
 export default class commonSearchService {
-    static $inject = ['searchConfig']
+    static $inject = []
 
     public searchResultsParams: SearchResultsParams = {}
     public searchResults: Property[] = []
     public currentProperty: Property
 
-    constructor (
-        private searchConfig
-    ) {}
+    constructor () {}
 
     public storeSearchResultsParams(searchResultsParams: SearchResultsParams) {
         this.searchResultsParams = searchResultsParams
@@ -29,6 +28,6 @@ export default class commonSearchService {
     }
 
     public getNumResultsPerPage() {
-        return this.searchConfig.SEARCH_RESULTS_LENGTH
+        return SEARCH_CONFIG.SEARCH_RESULTS_LENGTH
     }
 }

@@ -4,14 +4,13 @@ import CommonSearchService from '../../common/services/common-search.service'
 import FavoritesCommonService from '../../common/services/favorites-common.service'
 
 export default class propertyOverviewService {
-    static $inject = ['$state', 'searchConfig', 'commonSearchService', 'favoritesCommonService']
+    static $inject = ['$state', 'commonSearchService', 'favoritesCommonService']
 
     public roomsInfo: string
     public isPropertyInFavorites: boolean
 
     constructor (
         private $state: ng.ui.IStateService,
-        private searchConfig,
         private commonSearchService: CommonSearchService,
         private favoritesCommonService: FavoritesCommonService
     ) {}
@@ -25,8 +24,8 @@ export default class propertyOverviewService {
         this.isPropertyInFavorites = !this.isPropertyInFavorites
     }
 
-    public checkPropertyInFavorites(currentProperty: Property) {
-        this.isPropertyInFavorites = this.favoritesCommonService.checkPropertyInFavorites(currentProperty)
+    public checkPropertyInFavorites(uniqueUrl: string) {
+        this.isPropertyInFavorites = this.favoritesCommonService.checkPropertyInFavorites(uniqueUrl)
     }
 
     public formRoomsInfo({ bedroom_number, bathroom_number }: Property) {

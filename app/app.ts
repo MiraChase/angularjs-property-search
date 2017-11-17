@@ -7,8 +7,6 @@ import ApiService from './common/services/api.service'
 import CommonSearchService from './common/services/common-search.service'
 import FavoritesCommonService from './common/services/favorites-common.service'
 import PropertyListComponent from './common/components/property-list.component'
-import { ApiConfig } from './common/configs/api.config'
-import { SearchConfig } from './common/configs/search.config'
 import './app.less'
 
 const app = module('AppModule', [
@@ -29,8 +27,6 @@ const app = module('AppModule', [
     .service('commonSearchService', CommonSearchService)
     .service('favoritesCommonService', FavoritesCommonService)
     .component('propertyList', PropertyListComponent)
-    .constant('apiConfig', ApiConfig)
-    .constant('searchConfig', SearchConfig)
 
 element(document).ready( () => {
     bootstrap(document, [app.name])
